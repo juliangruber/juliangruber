@@ -4,4 +4,4 @@ I'm a Node.js and application developer with a focus on Product, P2P and UX.
 
 I'm currently working with [Liberate Science](https://github.com/libscie) on [Hypergraph](https://github.com/hypergraph-xyz/desktop), a P2P desktop application for as-you-go research publishing.
 
-[![Julian's GitHub stats](https://github-readme-stats.vercel.app/api?username=juliangruber&show_icons=true&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats)
+[![Julian's GitHub stats](https://github-readme-stats.vercel.app/api?username=juliangruber&show_icons=true&theme=graywhite)](https://github.com/anuraghazra/github-readme-stats)

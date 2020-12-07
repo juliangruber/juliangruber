@@ -9,11 +9,6 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch
-        uses: fjogeleit/http-request-action@master
-        id: response
-        with:
-          url: 'https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?outFields=*&returnGeometry=false&resultOffset=0&resultRecordCount=10&f=json&orderByFields=cases7_per_100k%20desc&where=1%3D1&inSR=4326&geometry=%7B%22spatialReference%22%3A%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D%2C%22xmin%22%3A1149751.0163160919%2C%22ymin%22%3A6080183.255423946%2C%22xmax%22%3A1215563.29766954%2C%22ymax%22%3A6093559.735373834%7D&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects'
       - uses: satackey/action-js-inline@v0.0.2
         with:
           script: |
@@ -28,7 +23,7 @@ jobs:
               res.on('end', () => {
                 const obj = JSON.parse(body)
                 console.log(obj.features)
-                const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[1]
+                const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('cases', attributes.cases7_per_100k)
               })

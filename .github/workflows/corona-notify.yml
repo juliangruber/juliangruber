@@ -37,4 +37,4 @@ jobs:
           subject: Inzidenz ${{steps.rki.outputs.cases}}
           body: Inzidenz ${{steps.rki.outputs.cases}}
           to: mail@juliangruber.com
-          from: mail@juliangruber.com
+          from: GitHub Actions

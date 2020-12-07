@@ -37,5 +37,5 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: ${{steps.rki.outputs.subject}}
           body: ${{steps.rki.outputs.body}}
-          to: mail@juliangruber.com
+          to: ${{secrets.MAIL_TO}}
           from: RKI

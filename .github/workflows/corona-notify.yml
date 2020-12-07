@@ -35,5 +35,6 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Inzidenz ${{steps.rki.outputs.cases}}
+          body: Inzidenz ${{steps.rki.outputs.cases}}
           to: mail@juliangruber.com
           from: mail@juliangruber.com

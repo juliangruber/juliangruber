@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: satackey/action-js-inline@v0.0.2
+        id: rki
         with:
           script: |
             const core = require('@actions/core')
@@ -22,9 +23,17 @@ jobs:
               res.on('data', d => body += d.toString())
               res.on('end', () => {
                 const obj = JSON.parse(body)
-                console.log(obj.features)
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('cases', attributes.cases7_per_100k)
               })
             })
+      - uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Inzidenz ${{steps.rki.outputs.cases}}
+          to: mail@juliangruber.com
+          from: mail@juliangruber.com

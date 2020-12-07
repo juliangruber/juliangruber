@@ -1,9 +1,9 @@
 name: Corona notify
 
 on:
-  push
+  push:
   schedule:
-   cron: '0 1 * * '
+    - cron: '0 1 * * '
 
 jobs:
   notify:

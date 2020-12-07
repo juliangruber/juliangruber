@@ -9,7 +9,7 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: satackey/action-js-inline@v0.0.3
+      - uses: satackey/action-js-inline@v0.0.2
         with:
           script: |
             const {get} = require('https')

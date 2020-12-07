@@ -22,6 +22,7 @@ jobs:
               res.on('data', d => body += d.toString())
               res.on('end', () => {
                 const obj = JSON.parse(body)
+                console.log(obj)
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[1]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('cases', attributes.cases7_per_100k)

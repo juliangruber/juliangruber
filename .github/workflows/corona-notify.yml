@@ -25,7 +25,8 @@ jobs:
                 const obj = JSON.parse(body)
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
-                core.setOutput('cases', attributes.cases7_per_100k)
+                core.setOutput('subject', `Inzidenz ${attributes.cases7_per_100k}`)
+                core.setOutput('body', attributes.cases7_per_100k >= 200 ? 'Daheim bleiben' : 'Saufeen')
               })
             })
       - uses: dawidd6/action-send-mail@v2
@@ -34,7 +35,7 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: Inzidenz ${{steps.rki.outputs.cases}}
-          body: Inzidenz ${{steps.rki.outputs.cases}}
+          subject: ${{steps.rki.outputs.subject}}
+          body: ${{steps.rki.outputs.body}}
           to: mail@juliangruber.com
-          from: GitHub Actions
+          from: RKI

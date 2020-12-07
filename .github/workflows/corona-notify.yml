@@ -25,7 +25,7 @@ jobs:
                 const obj = JSON.parse(body)
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
-                core.setOutput('subject', `Inzidenz ${attributes.cases7_per_100k}`)
+                core.setOutput('subject', `Inzidenz ${Math.round(attributes.cases7_per_100k)}`)
                 core.setOutput('body', attributes.cases7_per_100k >= 200 ? 'Daheim bleiben' : 'Saufeen')
               })
             })

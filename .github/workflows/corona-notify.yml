@@ -43,7 +43,7 @@ jobs:
                 rule: 'Kitas eingeschränkt'
               }, {
                 check: n => n >= 100,
-                rule: 'Wie bisher'
+                rule: 'Falls mindestens 3 Tage am Stück 👉 Lockdown'
               }
             ]
 

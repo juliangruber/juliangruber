@@ -44,6 +44,9 @@ jobs:
               }, {
                 check: n => n >= 100,
                 rule: 'Falls mindestens 3 Tage am Stück 👉 Lockdown'
+              }, {
+                check: n => n >= 100,
+                rule: 'Ausgangssperre ab 22 Uhr'
               }
             ]
 

@@ -45,7 +45,7 @@ jobs:
                 check: n => n <= 50,
                 rule: 'Museen, Galerien, Zoos, Gedenkstätten mit Maske'
               }, {
-                check: n => n > 50 && n <= 100,
+                check: n => n > 50,
                 rule: 'Museen, Galerien, Zoos, Gedenkstätten mit Maske und Termin'
               // Sport
               }, {
@@ -76,7 +76,7 @@ jobs:
                   .filter(({ check }) => check(attributes.cases7_per_100k))
                   .map(({ rule }) => `- ${rule}`)
                   .join('\n')
-                core.setOutput('body', `${rulesStr}\n\nAbstufungen: ${boundaries.join(', ')}. Stufenwechsel nach 3 Tagen.`)
+                core.setOutput('body', `${rulesStr}\n\nAbstufungen: ${boundaries.join(', ')}. Stufenwechsel nach 3 Tagen. Vollständig geimpfte Personen werden negativ getesteten Personen gleichgestellt.`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

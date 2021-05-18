@@ -61,6 +61,9 @@ jobs:
               }, {
                 check: n => n > 100,
                 rule: 'Ausgangssperre 22 Uhr bis 5 Uhr'
+              } ,{
+                check: n => n <= 100,
+                rule: 'Keine Ausgangssperre!'
               }
             ]
 

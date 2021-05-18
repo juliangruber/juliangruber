@@ -25,7 +25,10 @@ jobs:
                 check: n => n <= 35,
                 rule: '3 Haushalte (max 10 Personen) treffen'
               }, {
-                check: n => n > 35,
+                check: n => n > 35 && n < 100,
+                rule: '2 Haushalte (max 5 Personen) treffen'
+              }, {
+                check: n => n >= 100,
                 rule: '1 Haushalt + 1 Person (max 5 Personen) treffen'
               // Einzelhandel
               }, {
@@ -40,6 +43,13 @@ jobs:
               }, {
                 check: n => n > 150,
                 rule: 'Einzelhandel Click & Collect'
+              // Koerpernahe Dienstleisungen
+              } , {
+                check: n => n >= 100,
+                rule: 'Körpernahe Dienstleistungen untersagt'
+              } , {
+                check: n => n < 100,
+                rule: 'Körpernahe Dienstleistungen erlaubt'
               // Museen
               }, {
                 check: n => n <= 50,
@@ -57,6 +67,10 @@ jobs:
               }, {
                 check: n => n > 100,
                 rule: 'Kontaktfreier Individualsport aus 1 Haushalt oder bis 2 Personen'
+              // Gastronomie
+              }, {
+                check: n => n < 100,
+                rule: 'Außengastronomie bis 22 Uhr (mit Test & Termin)'
               // Ausgangssperre
               }, {
                 check: n => n > 100,

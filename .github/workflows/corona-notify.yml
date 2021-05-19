@@ -93,7 +93,7 @@ jobs:
                   .filter(({ check }) => check(attributes.cases7_per_100k))
                   .map(({ rule }) => `- ${rule}`)
                   .join('\n')
-                core.setOutput('body', `${rulesStr}\n\nAbstufungen: ${boundaries.join(', ')}. Stufenwechsel nach 3 Tagen. Vollständig geimpfte Personen werden negativ getesteten Personen gleichgestellt.`)
+                core.setOutput('body', `${rulesStr}\n\nAbstufungen: ${boundaries.join(', ')}. Stufenwechsel nach 3 bzw. 5 Tagen. Vollständig geimpfte Personen werden negativ getesteten Personen gleichgestellt.`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

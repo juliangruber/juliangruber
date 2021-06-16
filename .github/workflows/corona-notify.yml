@@ -18,68 +18,7 @@ jobs:
             
             const url = 'https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?outFields=*&returnGeometry=false&resultOffset=0&resultRecordCount=10&f=json&orderByFields=cases7_per_100k%20desc&where=1%3D1&inSR=4326&geometry=%7B%22spatialReference%22%3A%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D%2C%22xmin%22%3A1149751.0163160919%2C%22ymin%22%3A6080183.255423946%2C%22xmax%22%3A1215563.29766954%2C%22ymax%22%3A6093559.735373834%7D&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects'
 
-            const boundaries = [35, 50, 100, 150, 200]
-            const rules = [
-              // Kontakte
-              {
-                check: n => n <= 35,
-                rule: '3 Haushalte (max 10 Personen) treffen'
-              }, {
-                check: n => n > 35 && n < 100,
-                rule: '2 Haushalte (max 5 Personen) treffen'
-              }, {
-                check: n => n >= 100,
-                rule: '1 Haushalt + 1 Person (max 5 Personen) treffen'
-              // Einzelhandel
-              }, {
-                check: n => n <= 50,
-                rule: 'Einzelhandel mit qm Beschränkung'
-              }, {
-                check: n => n > 50 && n <= 100,
-                rule: 'Einzelhandel Click & Meet'
-              }, {
-                check: n => n > 100 && n <= 150,
-                rule: 'Einzelhandel Click & Meet + Test vorlegen (max. 48h PCR Test oder max. 24h Schnelltest)'
-              }, {
-                check: n => n > 150,
-                rule: 'Einzelhandel Click & Collect'
-              // Koerpernahe Dienstleisungen
-              } , {
-                check: n => n >= 100,
-                rule: 'Körpernahe Dienstleistungen untersagt'
-              } , {
-                check: n => n < 100,
-                rule: 'Körpernahe Dienstleistungen erlaubt'
-              // Museen
-              }, {
-                check: n => n <= 50,
-                rule: 'Museen, Galerien, Zoos, Gedenkstätten mit Maske'
-              }, {
-                check: n => n > 50,
-                rule: 'Museen, Galerien, Zoos, Gedenkstätten mit Maske und Termin'
-              // Sport
-              }, {
-                check: n => n <= 50,
-                rule: 'Kontaktfreier Sport bis 10 Personen in Aussenanlagen'
-              }, {
-                check: n => n > 50 && n <= 100,
-                rule: 'Kontaktfreier Individualsport bis 5 Personen aus 2 Haushalten'
-              }, {
-                check: n => n > 100,
-                rule: 'Kontaktfreier Individualsport aus 1 Haushalt oder bis 2 Personen'
-              // Gastronomie
-              }, {
-                check: n => n < 100,
-                rule: 'Außengastronomie bis 22 Uhr (mit Test & Termin)'
-              // Ausgangssperre
-              }, {
-                check: n => n > 100,
-                rule: 'Ausgangssperre 22 Uhr bis 5 Uhr'
-              } ,{
-                check: n => n <= 100,
-                rule: 'Keine Ausgangssperre!'
-              }
-            ]
+            const boundaries = [50, 100]
 
             get(url, res => {
               let body = ''
@@ -89,11 +28,7 @@ jobs:
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('subject', `Inzidenz Kaufbeuren: ${Math.round(attributes.cases7_per_100k)}`)
-                const rulesStr = rules
-                  .filter(({ check }) => check(attributes.cases7_per_100k))
-                  .map(({ rule }) => `- ${rule}`)
-                  .join('\n')
-                core.setOutput('body', `${rulesStr}\n\nAbstufungen: ${boundaries.join(', ')}. Stufenwechsel nach 3 bzw. 5 Tagen. Vollständig geimpfte Personen werden negativ getesteten Personen gleichgestellt.`)
+                core.setOutput('body', `Genießt den Sommer <3\n\nAbstufungen: ${boundaries.join(', ')}.`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

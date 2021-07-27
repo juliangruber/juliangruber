@@ -28,7 +28,7 @@ jobs:
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('subject', `Inzidenz Kaufbeuren: ${Math.round(attributes.cases7_per_100k)}`)
-                core.setOutput('body', `Genießt den Sommer <3\n\nAbstufungen: ${boundaries.join(', ')}.`)
+                core.setOutput('body', `Genießt den Regen <3\n\nAbstufungen: ${boundaries.join(', ')}.`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

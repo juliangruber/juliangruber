@@ -1,3 +1,3 @@
-### Hi, I'm Juli 👋
+### Hi, I'm Julian 👋
 
-I'm a Node.js and application developer with a focus on Product, P2P, DX and UX.
+I'm a software engineer with a focus on Node.js, React, Deno and Electron.

@@ -2,8 +2,8 @@ name: Corona notify
 
 on:
   # push:
-  # schedule:
-  #   - cron: '0 5 * * *'
+  schedule:
+    - cron: '0 5 * * *'
 
 jobs:
   notify:
@@ -26,7 +26,7 @@ jobs:
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('subject', `Inzidenz Kaufbeuren: ${Math.round(attributes.cases7_per_100k)}`)
-                core.setOutput('body', `Können wir das schaffen?\n\nAbstufungen: 35 (3G), 50 (3 Haushalte).`)
+                core.setOutput('body', `Hi`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

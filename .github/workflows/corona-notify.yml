@@ -26,7 +26,7 @@ jobs:
                 const { attributes } = obj.features.filter(({ attributes: { GEN } }) => GEN === 'Kaufbeuren')[0]
                 console.log(attributes.cases7_per_100k)
                 core.setOutput('subject', `Inzidenz Kaufbeuren: ${Math.round(attributes.cases7_per_100k)}`)
-                core.setOutput('body', `Guten Morgen <3\n\n7 Tage: ${attributes.cases7_lk} Fälle`)
+                core.setOutput('body', `Guten Morgen <3\n\n${attributes.cases7_lk} Fälle in 7 Tagen`)
               })
             })
       - uses: dawidd6/action-send-mail@v2

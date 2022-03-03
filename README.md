@@ -2,6 +2,4 @@
 
 I'm a software engineer with a focus on Node.js, React, Deno and Electron.
 
-🇺🇦🇺🇦🇺🇦
-I stand with Ukraine
-🇺🇦🇺🇦🇺🇦
+🇺🇦 I stand with Ukraine

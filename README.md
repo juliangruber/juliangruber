@@ -2,4 +2,4 @@
 
 I'm a software engineer with a focus on P2P, Node.js, React, Blockchain and Electron.
 
-Currently I'm creating [Filecoin Station](https://github.com/filecoin-station) (desktop app) and [Meridian](https://github.com/Meridian-IE) (decentralized impact evaluator) at [Protocol Labs](https://github.com/protocol).
+Currently I'm creating the [Station Network](https://github.com/filecoin-station) and [Meridian Impact Evaluator](https://github.com/Meridian-IE/impact-evaluator) at [Space Meridian](https://meridian.space).
